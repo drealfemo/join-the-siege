@@ -17,7 +17,7 @@ This is a real-world challenge that allows you to demonstrate your approach to b
 - How might you extend the classifier with additional technologies, capabilities, or features?
 
 
-### Part 2: Productionising the Classifier 
+### Part 2: Productionising the Classifier
 
 - How can you ensure the classifier is robust and reliable in a production environment?
 - How can you deploy the classifier to make it accessible to other services and users?
@@ -55,13 +55,20 @@ We encourage you to be creative! Feel free to use any libraries, tools, services
     ```
 
 3. Run the Flask app:
+
+    *For developer test*
     ```shell
-    python -m src.app
+    uvicorn src.app:app --reload
+    ```
+
+    *In production*
+    ```shell
+    uvicorn src.app:app --host 0.0.0.0 --port 8000 --workers 4
     ```
 
 4. Test the classifier using a tool like curl:
     ```shell
-    curl -X POST -F 'file=@path_to_pdf.pdf' http://127.0.0.1:5000/classify_file
+    curl -X POST -F 'file=@path_to_pdf.pdf' http://127.0.0.1:8000/classify_file
     ```
 
 5. Run tests:
@@ -69,8 +76,14 @@ We encourage you to be creative! Feel free to use any libraries, tools, services
     pytest
     ```
 
+6. Auto-generated docs:
+   ```shell
+   OpenAPI docs at http://127.0.0.1:8000/docs
+   ReDoc docs at http://127.0.0.1:8000/redoc
+   ```
+
 ## Submission
 
 Please aim to spend 3 hours on this challenge.
 
-Once completed, submit your solution by sharing a link to your forked repository. Please also provide a brief write-up of your ideas, approach, and any instructions needed to run your solution. 
+Once completed, submit your solution by sharing a link to your forked repository. Please also provide a brief write-up of your ideas, approach, and any instructions needed to run your solution.

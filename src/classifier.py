@@ -1,17 +1,15 @@
-from werkzeug.datastructures import FileStorage
+from fastapi import UploadFile
 
-def classify_file(file: FileStorage):
-    filename = file.filename.lower()
-    # file_bytes = file.read()
+FILECLASSES = ["drivers_license", "bank_statement", "invoice"]
 
-    if "drivers_license" in filename:
-        return "drivers_licence"
 
-    if "bank_statement" in filename:
-        return "bank_statement"
+def classify_file(file: UploadFile) -> str:
+    # this is to satisfy mypy, fast api does not allow a nameless file to be uploaded
+    if not (filename := file.filename):
+        return "unknown"
 
-    if "invoice" in filename:
-        return "invoice"
-
-    return "unknown file"
-
+    for f_class in FILECLASSES:
+        if f_class in filename.lower():
+            return f_class
+    else:
+        return "unknown"

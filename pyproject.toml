@@ -1,0 +1,61 @@
+[tool.mypy]
+strict = true
+pretty = false
+mypy_path = "./src"
+
+[tool.ruff]
+src = ["src"]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    ".md",
+    ".txt",
+]
+ignore = ["UP007", "UP038", "B905", "UP024", "B904", "ISC001", "E902"]
+select = [
+    "A",
+    "ASYNC",
+    "B",
+    "C4",
+    "C90",
+    "E",
+    "ERA",
+    "F",
+    "G",
+    "I",
+    "ISC",
+    "ICN",
+    "N",
+    "PIE",
+    "RUF",
+    "SIM",
+    "T10",
+    "T20",
+    "UP",
+    "W",
+]
+line-length = 100

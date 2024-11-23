@@ -1,0 +1,33 @@
+After reading through the problem and inspecting the provided code, I decided to focus on three areas:
+
+    1. Improve the classifier logic
+       Relying on extension in filename is not a reliable way to determine filetype espciaaly when the extension in
+       the filename is allowed but the data in the file is of a different type. Checking the content of the file is a
+       better way to determine filetype which I my solution uses the `magic` python library to determine the mime type.
+
+       To further improve the classifier, machine learning-based classifier could be added to further improve the detection
+       accuracy of the filetype and also to recognise the file class instead of still relying in filename which is not very
+       trustworthy. A simple implementaion can be achieved with `RandomForestClassifier` in scikit-learn. This would require
+       a large amount of data to train for each allowed filetype.
+
+    2. Using a better framework
+       Flask is a prototyping framework which lacks some desired functionalities when it comes to scaling for production.
+
+       FastApi is a much better alternative. FastAPI is faster and is built on ASGI as opposed to falsk's WSGI. FastAPI
+       supports asynchronous operations out of the box and will be able to handle multiple requests without blocking threads.
+       It can manage more requests per worker in I/O bound application and outperforms Flask in handling high concurrency
+       and long-running tasks. FastAPI also provides automatic data validation and serialization using Pydantic and comes
+       with OpenApi documenation autogeneration. It's also better suited for handling large files efficiently without
+       excessive memory usage compared to Flask.
+
+       I am using Uvicorn ASGI server to run the app but there are other options like Hypercorn or
+       Gunicorn (with Uvicorn workers) which can be chosen depending on the performance required.
+
+
+    3. Set up linting and test coverage
+       Production ready code needs to have linting and good test converage. I have extended the unit tests and
+       added linting. This would help to enforce and ensure good code structure and help to prevent nugs from sneaking to
+       production environment. The linting still needs some work to optimise it properly.
+
+       I failed to incorporate a pipeline that would run when pull requests are created but this can done by simply adding a
+       yaml file under with the necessary details inside `.github/workflows`.
