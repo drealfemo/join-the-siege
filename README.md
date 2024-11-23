@@ -82,6 +82,10 @@ We encourage you to be creative! Feel free to use any libraries, tools, services
    ReDoc docs at http://127.0.0.1:8000/redoc
    ```
 
+7. Running pre-commit
+   ```shell
+   pre-commit run --all-files
+   ```
 ## Submission
 
 Please aim to spend 3 hours on this challenge.

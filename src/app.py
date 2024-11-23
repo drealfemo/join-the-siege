@@ -4,15 +4,6 @@ from fastapi.responses import JSONResponse
 from src.classifier import classify_file
 from src.utils import allowed_file
 
-ALLOWED_MIME_TYPES = {
-    "image/png",
-    "image/jpeg",
-    "application/pdf",
-    "application/zip",
-    "application/json",
-    "application/text",
-}
-
 app = FastAPI()
 
 

@@ -12,7 +12,7 @@ repos:
         name: ruff
         entry: ruff
         language: python
-        stages: [commit, manual]
+        stages: [manual]
         args: ["check", "--fix", "--select", "I", "--no-cache"]
       - id: ruff-format
         name: ruff-format
